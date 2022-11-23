@@ -1,0 +1,23 @@
+body {
+	background: #1690A7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+	float: left;
+}
+
+input {
+	border: 1px solid #ccc;
+	width: 95%;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 50px;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	 <link rel="stylesheet" href="bankacc.css">
+    <title>Bank Managament System</title>
+</head>
+<body>
+	<h1><center>Bank Management System<center></h1>
+<div1>
+              <input type="submit" value="Create Account">
+      <br><br><input type="submit" value="Delete Account">
+      <br><br><input type="submit" value="Update Account">
+      <br><br><input type="submit" value="Deposit">
+      <br><br><input type="submit" value="Withdraw">
+</div1>	  
+</body>
+</html>
