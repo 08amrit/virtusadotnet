@@ -1,0 +1,121 @@
+import java.util.Scanner;  
+class AccDetails {  
+    private String Acc_no;  
+    private String name;  
+    private String Acc_type;  
+    private long bal;  
+    Scanner sc = new Scanner(System.in);  
+     public void openAccount() {  
+        System.out.print("Enter Account No: ");  
+        Acc_no = sc.next();  
+        System.out.print("Enter Account type: ");  
+        Acc_type = sc.next();  
+        System.out.print("Enter Name: ");  
+        name = sc.next();  
+        System.out.print("Enter bal: ");  
+        bal = sc.nextLong();  
+    }  
+    public void showAccount() {  
+        System.out.println("Name of account holder: " + name);  
+        System.out.println("Account no.: " + Acc_no);  
+        System.out.println("Account type: " + Acc_type);  
+        System.out.println("bal: " + bal);  
+    }  
+    public void deposit() {  
+        long amt;  
+        System.out.println("Enter the amount you want to deposit: ");  
+        amt = sc.nextLong();  
+        bal = bal + amt;  
+    }  
+    public void withdrawal() {  
+        long amt;  
+        System.out.println("Enter the amount you want to withdraw: ");  
+        amt = sc.nextLong();  
+        if (bal >= amt) {  
+            bal = bal - amt;  
+            System.out.println("balance after withdrawal: " + bal);  
+        } else {  
+            System.out.println("Your balance is less than " + amt + "\tTransaction failed" );  
+        }  
+    }  
+    public boolean search(String ac_no) {  
+        if (Acc_no.equals(ac_no)) {  
+            showAccount();  
+            return (true);  
+        }  
+        return (false);  
+    }  
+}  
+public class main {  
+    public static void main(String arg[]) {  
+        Scanner sc = new Scanner(System.in);  
+        //create initial accounts  
+        System.out.print("Number of customers ");  
+        int n = sc.nextInt();  
+        AccDetails C[] = new AccDetails[n];  
+        for (int i = 0; i < C.length; i++) {  
+            C[i] = new AccDetails();  
+            C[i].openAccount();  
+        }  
+        int ch;  
+        do {  
+            System.out.println("1. Display all account details \n 2. Search by Account number\n 3. Deposit the amount \n 4. Withdraw the amount \n 5.Exit ");  
+            System.out.println("Enter your choice: ");  
+            ch = sc.nextInt();  
+                switch (ch) {  
+                    case 1:  
+                        for (int i = 0; i < C.length; i++) {  
+                            C[i].showAccount();  
+                        }  
+                        break;  
+                    case 2:  
+                        System.out.print("Enter account no: ");  
+                        String ac_no = sc.next();  
+                        boolean found = false;  
+                        for (int i = 0; i < C.length; i++) {  
+                            found = C[i].search(ac_no);  
+                            if (found) {  
+                                break;  
+                            }  
+                        }  
+                        if (!found) {  
+                            System.out.println("Account doesn't exist");  
+                        }  
+                        break;  
+                    case 3:  
+                        System.out.print("Enter Account no. : ");  
+                        ac_no = sc.next();  
+                        found = false;  
+                        for (int i = 0; i < C.length; i++) {  
+                            found = C[i].search(ac_no);  
+                            if (found) {  
+                                C[i].deposit();  
+                                break;  
+                            }  
+                        }  
+                        if (!found) {  
+                            System.out.println("Account doesn't exist");  
+                        }  
+                        break;  
+                    case 4:  
+                        System.out.print("Enter Account No : ");  
+                        ac_no = sc.next();  
+                        found = false;  
+                        for (int i = 0; i < C.length; i++) {  
+                            found = C[i].search(ac_no);  
+                            if (found) {  
+                                C[i].withdrawal();  
+                                break;  
+                            }  
+                        }  
+                        if (!found) {  
+                            System.out.println("Account doesn't exist");  
+                        }  
+                        break;  
+                    case 5:    
+                        break;  
+                }  
+            }  
+            while (ch != 5);  
+        }  
+    }  
